@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import SectionWrapper from "@/components/SectionWrapper";
 import Tag from "@/components/Tag";
+import LabComponentRenderer from "@/components/lab/LabComponentRenderer";
 import { labItems } from "@/data/lab";
 
 interface Props {
@@ -45,14 +46,20 @@ export default async function LabDetailPage({ params }: Props) {
         <span className="text-sm text-neutral-500 mt-4 block">Year: {item.year}</span>
       </header>
 
-      {/* Placeholder for interactive component */}
-      <div className="rounded-2xl border border-dashed border-neutral-700 bg-neutral-900/50 p-12 flex flex-col items-center justify-center text-center min-h-64">
-        <span className="text-4xl mb-4">🚧</span>
-        <p className="text-neutral-400 font-medium mb-2">Interactive experience coming soon</p>
-        <p className="text-sm text-neutral-600 max-w-sm">
-          This mini-project is being built. Drop in a React component here to make it interactive.
-        </p>
-      </div>
+      {/* Interactive component */}
+      {item.component ? (
+        <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 sm:p-8">
+          <LabComponentRenderer name={item.component} />
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-dashed border-neutral-700 bg-neutral-900/50 p-12 flex flex-col items-center justify-center text-center min-h-64">
+          <span className="text-4xl mb-4">🚧</span>
+          <p className="text-neutral-400 font-medium mb-2">Interactive experience coming soon</p>
+          <p className="text-sm text-neutral-600 max-w-sm">
+            This mini-project is being built. Drop in a React component here to make it interactive.
+          </p>
+        </div>
+      )}
     </SectionWrapper>
   );
 }
