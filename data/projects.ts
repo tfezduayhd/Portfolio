@@ -1,0 +1,40 @@
+import { Project } from "@/types";
+
+export const projects: Project[] = [
+  {
+    slug: "brand-redesign",
+    title: "Brand Redesign — Lumino",
+    description: "Complete visual identity redesign for a SaaS startup, from discovery to design system.",
+    tags: ["UI/UX", "Branding", "Design System"],
+    role: "Lead UX/UI Designer",
+    problem: "Lumino had an outdated visual identity that didn't reflect its modern product vision and was causing trust issues with enterprise clients.",
+    process: "User interviews, competitive benchmarking, brand workshops, iterative design sprints over 6 weeks.",
+    solution: "New logo, color palette, typography scale, component library and updated web presence.",
+    impact: "30% increase in conversion rate on the pricing page within 3 months of launch.",
+    year: 2024,
+  },
+  {
+    slug: "mobile-app-ux",
+    title: "Mobile App UX — TaskFlow",
+    description: "End-to-end UX redesign of a productivity app focused on reducing cognitive load.",
+    tags: ["UX Research", "Mobile", "Prototyping"],
+    role: "UX Designer",
+    problem: "Users struggled to prioritize tasks and reported feeling overwhelmed by the current interface.",
+    process: "Usability tests, affinity mapping, information architecture restructuring, hi-fi prototyping in Figma.",
+    solution: "Simplified navigation, smart grouping of tasks, and a focus mode that hides distractions.",
+    impact: "Task completion rate improved by 45%, and daily active users grew by 20% post-launch.",
+    year: 2023,
+  },
+  {
+    slug: "design-system",
+    title: "Design System — Orbita",
+    description: "Scalable design system bridging design and engineering across 4 product teams.",
+    tags: ["Design System", "Component Library", "Front-End"],
+    role: "Design System Lead",
+    problem: "Four product teams worked with inconsistent UI patterns, slowing down development and harming brand consistency.",
+    process: "Audit of existing components, tokenization, Figma library + React component library built in parallel.",
+    solution: "Atomic design system with 80+ components, full Figma ↔ code sync, and documentation site.",
+    impact: "Reduced UI development time by 35% across all teams and eliminated brand inconsistencies.",
+    year: 2023,
+  },
+];
