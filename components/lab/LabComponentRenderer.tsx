@@ -5,6 +5,7 @@ import CssAnimationPlayground from "./CssAnimationPlayground";
 import TypographyTester from "./TypographyTester";
 import PomodoroTimer from "./PomodoroTimer";
 import MarkdownPreviewer from "./MarkdownPreviewer";
+import KanbanBoard from "./KanbanBoard";
 
 const COMPONENT_MAP: Record<string, React.ComponentType> = {
   ColorPaletteGenerator,
@@ -12,6 +13,7 @@ const COMPONENT_MAP: Record<string, React.ComponentType> = {
   TypographyTester,
   PomodoroTimer,
   MarkdownPreviewer,
+  KanbanBoard,
 };
 
 interface Props {

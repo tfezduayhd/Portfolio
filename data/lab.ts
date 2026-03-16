@@ -2,6 +2,14 @@ import { LabItem } from "@/types";
 
 export const labItems: LabItem[] = [
   {
+    slug: "kanban-board",
+    title: "Kanban Board",
+    description: "A fully interactive project board with drag-and-drop, card creation, priority badges, and inline editing — all without external dependencies.",
+    tags: ["Tool", "Productivity", "React", "Drag & Drop"],
+    component: "KanbanBoard",
+    year: 2025,
+  },
+  {
     slug: "color-palette-generator",
     title: "Color Palette Generator",
     description: "Generate harmonious color palettes from a single seed color. Useful for quick brand exploration.",
