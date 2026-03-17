@@ -11,23 +11,23 @@ const navLinks = [
 export default function Header() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/45 backdrop-blur-xl">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-lg font-semibold tracking-tight hover:text-indigo-400 transition-colors">
+        <Link href="/" className="text-lg font-semibold tracking-tight hover:text-indigo-300 transition-colors duration-300">
           Hd.
         </Link>
-        <ul className="flex gap-6 text-sm font-medium text-neutral-400">
+        <ul className="flex gap-6 text-sm font-medium text-neutral-300">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`hover:text-neutral-100 transition-colors ${
+                className={`hover:text-white transition-colors duration-300 ${
                   link.href === "/"
                     ? pathname === "/"
-                      ? "text-neutral-100"
+                      ? "text-white"
                       : ""
                     : pathname.startsWith(link.href)
-                    ? "text-neutral-100"
+                    ? "text-white"
                     : ""
                 }`}
               >

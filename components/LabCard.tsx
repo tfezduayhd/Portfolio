@@ -10,7 +10,7 @@ export default function LabCard({ item }: LabCardProps) {
   return (
     <Link
       href={`/lab/${item.slug}`}
-      className="group block rounded-2xl border border-neutral-800 bg-neutral-900 p-6 hover:border-emerald-500/50 hover:bg-neutral-800/60 transition-all duration-300"
+      className="group block rounded-2xl glass-panel p-6 smooth-lift hover:border-emerald-400/60"
     >
       <div className="flex items-center gap-3 mb-2">
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 text-sm font-bold shrink-0">
