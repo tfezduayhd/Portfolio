@@ -4,7 +4,8 @@ export const labItems: LabItem[] = [
   {
     slug: "ascii-image-studio",
     title: "ASCII Image Studio",
-    description: "Advanced image-to-ASCII converter with visual tuning, custom character sets, animation controls, and export options.",
+    description:
+      "Advanced image-to-ASCII studio with visual tuning, custom character sets, animation controls, and export-ready rendering workflows.",
     tags: ["Tool", "ASCII", "Animation", "Export"],
     component: "AsciiImageStudio",
     year: 2026,
@@ -12,7 +13,8 @@ export const labItems: LabItem[] = [
   {
     slug: "kanban-board",
     title: "Kanban Board",
-    description: "A fully interactive project board with drag-and-drop, card creation, priority badges, and inline editing — all without external dependencies.",
+    description:
+      "Production-grade interactive board with drag-and-drop, card creation, priority badges, inline editing, and smooth state handling without external dependencies.",
     tags: ["Tool", "Productivity", "React", "Drag & Drop"],
     component: "KanbanBoard",
     year: 2025,
@@ -28,7 +30,8 @@ export const labItems: LabItem[] = [
   {
     slug: "css-animation-playground",
     title: "CSS Animation Playground",
-    description: "Interactive playground to experiment with CSS keyframe animations in real time.",
+    description:
+      "Advanced motion playground to design, tune, and preview CSS keyframe animations in real time with immediate visual feedback.",
     tags: ["CSS", "Animation", "Experiment"],
     component: "CssAnimationPlayground",
     year: 2024,
@@ -36,7 +39,8 @@ export const labItems: LabItem[] = [
   {
     slug: "typography-tester",
     title: "Typography Tester",
-    description: "Test font pairings, sizes, and line-heights directly in the browser.",
+    description:
+      "Design-focused typography workspace to evaluate font pairings, hierarchy scales, spacing rhythm, and line-heights directly in the browser.",
     tags: ["Typography", "Tool", "Front-End"],
     component: "TypographyTester",
     year: 2023,
@@ -44,7 +48,8 @@ export const labItems: LabItem[] = [
   {
     slug: "pomodoro-timer",
     title: "Pomodoro Timer",
-    description: "A fully usable Pomodoro timer with focus sessions, short and long breaks, and session tracking.",
+    description:
+      "Complete productivity timer with focus sessions, short and long breaks, session tracking, and clear interaction states for daily deep-work routines.",
     tags: ["Productivity", "Tool", "React"],
     component: "PomodoroTimer",
     year: 2025,
@@ -52,7 +57,8 @@ export const labItems: LabItem[] = [
   {
     slug: "markdown-previewer",
     title: "Markdown Previewer",
-    description: "Write Markdown in the left pane and see live HTML output on the right. Built with a custom zero-dependency parser.",
+    description:
+      "Developer-friendly writing studio with side-by-side Markdown editing, live HTML rendering, and a custom zero-dependency parser for precise output control.",
     tags: ["Tool", "Markdown", "Front-End"],
     component: "MarkdownPreviewer",
     year: 2025,
