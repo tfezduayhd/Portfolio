@@ -14,7 +14,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur-md">
       <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-lg font-semibold tracking-tight hover:text-indigo-400 transition-colors">
-          ik.
+          Hd.
         </Link>
         <ul className="flex gap-6 text-sm font-medium text-neutral-400">
           {navLinks.map((link) => (

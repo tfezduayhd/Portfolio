@@ -19,7 +19,7 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <SectionWrapper className="pt-24 pb-12">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl lg:max-w-4xl">
           <p className="text-sm font-medium text-indigo-400 mb-4 tracking-widest uppercase">
             UI/UX Designer & Front-End Developer
           </p>
