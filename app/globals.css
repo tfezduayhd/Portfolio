@@ -10,8 +10,8 @@ html {
 
 body {
   background:
-    radial-gradient(1000px 500px at 10% -10%, rgba(99, 102, 241, 0.25), transparent 60%),
-    radial-gradient(800px 450px at 90% -20%, rgba(16, 185, 129, 0.18), transparent 60%),
+    radial-gradient(70vw 45vh at 10% 0%, rgba(99, 102, 241, 0.25), transparent 60%),
+    radial-gradient(60vw 40vh at 90% 0%, rgba(16, 185, 129, 0.18), transparent 60%),
     #09090b;
 }
 
@@ -28,7 +28,7 @@ body {
   }
 
   .smooth-lift {
-    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 320ms ease, background-color 320ms ease;
+    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease;
   }
 
   .smooth-lift:hover {
@@ -57,9 +57,13 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
-  .fade-up-delay,
-  .smooth-lift {
-    animation: none !important;
-    transition: none !important;
+  .fade-up-delay {
+    animation: none;
+  }
+
+  .smooth-lift,
+  .smooth-lift:hover {
+    transform: none;
+    transition: none;
   }
 }
