@@ -168,21 +168,21 @@ const labCopy: Record<string, Record<Language, LocalizedLabFields>> = {
   "ascii-image-studio": {
     en: {
       description:
-        "Advanced image-to-ASCII converter with visual tuning, custom character sets, animation controls, and export options.",
+        "Advanced image-to-ASCII studio with visual tuning, custom character sets, animation controls, and export-ready rendering workflows.",
     },
     fr: {
       description:
-        "Convertisseur image-vers-ASCII avancé avec réglages visuels, jeux de caractères personnalisés, contrôles d'animation et options d'export.",
+        "Studio image-vers-ASCII avancé avec réglages visuels, jeux de caractères personnalisés, contrôles d'animation et workflows de rendu prêts à l'export.",
     },
   },
   "kanban-board": {
     en: {
       description:
-        "A fully interactive project board with drag-and-drop, card creation, priority badges, and inline editing — all without external dependencies.",
+        "Production-grade interactive board with drag-and-drop, card creation, priority badges, inline editing, and smooth state handling without external dependencies.",
     },
     fr: {
       description:
-        "Tableau de projet entièrement interactif avec glisser-déposer, création de cartes, badges de priorité et édition en ligne — sans dépendances externes.",
+        "Tableau interactif de niveau production avec glisser-déposer, création de cartes, badges de priorité, édition en ligne et gestion d'état fluide sans dépendances externes.",
     },
   },
   "color-palette-generator": {
@@ -196,37 +196,42 @@ const labCopy: Record<string, Record<Language, LocalizedLabFields>> = {
   },
   "css-animation-playground": {
     en: {
-      description: "Interactive playground to experiment with CSS keyframe animations in real time.",
+      description:
+        "Advanced motion playground to design, tune, and preview CSS keyframe animations in real time with immediate visual feedback.",
     },
     fr: {
-      description: "Playground interactif pour expérimenter les animations CSS keyframes en temps réel.",
+      description:
+        "Playground motion avancé pour concevoir, ajuster et prévisualiser des animations CSS keyframes en temps réel avec retour visuel immédiat.",
     },
   },
   "typography-tester": {
     en: {
-      description: "Test font pairings, sizes, and line-heights directly in the browser.",
+      description:
+        "Design-focused typography workspace to evaluate font pairings, hierarchy scales, spacing rhythm, and line-heights directly in the browser.",
     },
     fr: {
-      description: "Testez des associations de polices, tailles et interlignes directement dans le navigateur.",
+      description:
+        "Espace typographique orienté design pour évaluer associations de polices, échelles hiérarchiques, rythme d'espacement et interlignes directement dans le navigateur.",
     },
   },
   "pomodoro-timer": {
     en: {
-      description: "A fully usable Pomodoro timer with focus sessions, short and long breaks, and session tracking.",
+      description:
+        "Complete productivity timer with focus sessions, short and long breaks, session tracking, and clear interaction states for daily deep-work routines.",
     },
     fr: {
       description:
-        "Un timer Pomodoro complet avec sessions de concentration, pauses courtes et longues, et suivi des sessions.",
+        "Un timer productivité complet avec sessions de concentration, pauses courtes et longues, suivi des sessions et états d'interaction clairs pour le travail en profondeur.",
     },
   },
   "markdown-previewer": {
     en: {
       description:
-        "Write Markdown in the left pane and see live HTML output on the right. Built with a custom zero-dependency parser.",
+        "Developer-friendly writing studio with side-by-side Markdown editing, live HTML rendering, and a custom zero-dependency parser for precise output control.",
     },
     fr: {
       description:
-        "Écrivez du Markdown dans le panneau gauche et visualisez le rendu HTML en direct à droite. Construit avec un parseur custom sans dépendance.",
+        "Studio d'écriture orienté développeur avec édition Markdown côte à côte, rendu HTML en direct et parseur custom sans dépendance pour un contrôle précis du rendu.",
     },
   },
 };
