@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Tag from "./Tag";
 import { LabItem } from "@/types";
+import { Language, withLanguage } from "@/lib/i18n";
 
 interface LabCardProps {
   item: LabItem;
+  language: Language;
 }
 
-export default function LabCard({ item }: LabCardProps) {
+export default function LabCard({ item, language }: LabCardProps) {
   return (
     <Link
-      href={`/lab/${item.slug}`}
+      href={withLanguage(`/lab/${item.slug}`, language)}
       className="group block rounded-2xl glass-panel p-6 smooth-lift hover:border-emerald-400/60"
     >
       <div className="flex items-center gap-3 mb-2">
