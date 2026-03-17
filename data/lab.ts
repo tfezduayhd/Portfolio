@@ -20,8 +20,8 @@ export const labItems: LabItem[] = [
   {
     slug: "color-palette-generator",
     title: "Color Palette Generator",
-    description: "Generate harmonious color palettes from a single seed color. Useful for quick brand exploration.",
-    tags: ["Tool", "Color", "Front-End"],
+    description: "Advanced palette studio with harmony modes, tuning controls, and design-ready color token export.",
+    tags: ["Tool", "Color", "Design System", "Front-End"],
     component: "ColorPaletteGenerator",
     year: 2024,
   },
