@@ -21,14 +21,14 @@ export default function HomePage() {
       <SectionWrapper className="pt-24 pb-12">
         <div className="max-w-2xl">
           <p className="text-sm font-medium text-indigo-400 mb-4 tracking-widest uppercase">
-            UI/UX Designer & Front-End Dev
+            UI/UX Designer & Front-End Developer
           </p>
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-neutral-100 mb-6 leading-tight">
-            I design experiences<br />
-            <span className="text-indigo-400">people love to use.</span>
+            Hi, I&apos;m Hugo Dimitrijevic.<br />
+            <span className="text-indigo-400">I design and build adaptive digital experiences.</span>
           </h1>
           <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
-            I craft intuitive, beautiful digital products — from UX research to pixel-perfect interfaces and interactive prototypes.
+            UI/UX Designer and Front-End Developer, I combine design thinking with implementation to create user-centered interfaces. I&apos;m currently completing a Master in Transition numérique et Codesign at CNAM Paris and working in alternance at GRDF, with a strong focus on generative AI, Adaptive UI, and design systems.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
