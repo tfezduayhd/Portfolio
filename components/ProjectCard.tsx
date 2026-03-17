@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Tag from "./Tag";
 import { Project } from "@/types";
+import { Language, withLanguage } from "@/lib/i18n";
 
 interface ProjectCardProps {
   project: Project;
+  language: Language;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, language }: ProjectCardProps) {
   return (
     <Link
-      href={`/projects/${project.slug}`}
+      href={withLanguage(`/projects/${project.slug}`, language)}
       className="group block rounded-2xl glass-panel p-6 smooth-lift hover:border-indigo-400/60"
     >
       <div className="flex items-start justify-between gap-4 mb-3">
