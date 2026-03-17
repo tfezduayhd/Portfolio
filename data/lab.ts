@@ -2,6 +2,14 @@ import { LabItem } from "@/types";
 
 export const labItems: LabItem[] = [
   {
+    slug: "ascii-image-studio",
+    title: "ASCII Image Studio",
+    description: "Advanced image-to-ASCII converter with visual tuning, custom character sets, animation controls, and export options.",
+    tags: ["Tool", "ASCII", "Animation", "Export"],
+    component: "AsciiImageStudio",
+    year: 2026,
+  },
+  {
     slug: "kanban-board",
     title: "Kanban Board",
     description: "A fully interactive project board with drag-and-drop, card creation, priority badges, and inline editing — all without external dependencies.",
