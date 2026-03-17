@@ -12,8 +12,8 @@ export default function LabPage() {
   return (
     <SectionWrapper>
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-neutral-100 mb-3">Lab</h1>
-        <p className="text-neutral-400 text-lg">
+        <h1 className="text-4xl font-bold text-white mb-3 fade-up">Lab</h1>
+        <p className="text-neutral-300 text-lg fade-up-delay">
           Interactive experiments, mini-tools and front-end playgrounds. Each project is self-contained and ready to explore.
         </p>
       </div>

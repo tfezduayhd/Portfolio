@@ -19,27 +19,27 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <SectionWrapper className="pt-24 pb-12">
-        <div className="max-w-2xl lg:max-w-4xl">
-          <p className="text-sm font-medium text-indigo-400 mb-4 tracking-widest uppercase">
+        <div className="max-w-2xl lg:max-w-4xl rounded-3xl glass-panel p-8 sm:p-10 fade-up">
+          <p className="text-sm font-medium text-indigo-300 mb-4 tracking-widest uppercase">
             UI/UX Designer & Front-End Developer
           </p>
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-neutral-100 mb-6 leading-tight">
+          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight fade-up-delay">
             Hi, I&apos;m Hugo Dimitrijevic.<br />
-            <span className="text-indigo-400">I design and build adaptive digital experiences.</span>
+            <span className="bg-gradient-to-r from-indigo-300 to-emerald-300 bg-clip-text text-transparent">I design and build adaptive digital experiences.</span>
           </h1>
-          <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
+          <p className="text-lg text-neutral-300 mb-8 leading-relaxed">
             UI/UX Designer and Front-End Developer, I combine design thinking with implementation to create user-centered interfaces. I&apos;m currently completing a Master in Transition numérique et Codesign at CNAM Paris and working in alternance at GRDF, with a strong focus on generative AI, Adaptive UI, and design systems.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/projects"
-              className="px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition-colors text-sm"
+              className="px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition-all duration-300 text-sm smooth-lift"
             >
               View Projects
             </Link>
             <Link
               href="/lab"
-              className="px-6 py-3 rounded-xl border border-neutral-700 hover:border-neutral-500 text-neutral-300 hover:text-neutral-100 font-medium transition-colors text-sm"
+              className="px-6 py-3 rounded-xl border border-white/15 hover:border-white/30 text-neutral-200 hover:text-white font-medium transition-all duration-300 text-sm smooth-lift bg-white/5 backdrop-blur-sm"
             >
               Explore the Lab →
             </Link>
