@@ -323,8 +323,8 @@ async function exportMp4(
     paintAsciiToCanvas(tempCanvas, grid, opts.fontSize, opts.colorMode);
 
     /* Request a new frame from the stream */
-    if ("requestFrame" in track) {
-      (track as unknown as { requestFrame: () => void }).requestFrame();
+    if ("requestFrame" in track && typeof (track as Record<string, unknown>).requestFrame === "function") {
+      (track as Record<string, () => void>).requestFrame();
     }
     await new Promise((r) => setTimeout(r, frameDuration));
     onProgress(((i + 1) / frameCount) * 100);
@@ -560,7 +560,7 @@ export default function AsciiImageStudio() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const outputCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const animFrameRef = useRef<number>(0);
-  const videoTimerRef = useRef<ReturnType<typeof setInterval>>(undefined);
+  const videoTimerRef = useRef<number | undefined>(undefined);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   /* ── Paint loop ─────────────────────────────────── */
@@ -614,10 +614,11 @@ export default function AsciiImageStudio() {
   useEffect(() => {
     if (!store.animate || store.mediaType !== "image") return;
     const timer = window.setInterval(() => {
-      store.setCurrentFrame((store.currentFrame + 1) % Math.max(1, store.totalFrames));
+      const s = useAsciiStore.getState();
+      s.setCurrentFrame((s.currentFrame + 1) % Math.max(1, s.totalFrames));
     }, 1000 / Math.max(1, store.fps));
     return () => window.clearInterval(timer);
-  }, [store, store.animate, store.fps, store.totalFrames, store.currentFrame, store.mediaType]);
+  }, [store.animate, store.fps, store.mediaType]);
 
   /* ── Repaint on any parameter change ────────────── */
   useEffect(() => {
@@ -628,10 +629,10 @@ export default function AsciiImageStudio() {
   /* ── Video frame ticker ─────────────────────────── */
   useEffect(() => {
     if (store.mediaType !== "video" || !store.videoPlaying) return;
-    videoTimerRef.current = setInterval(() => {
+    videoTimerRef.current = window.setInterval(() => {
       requestAnimationFrame(paint);
     }, 1000 / 30);
-    return () => clearInterval(videoTimerRef.current);
+    return () => window.clearInterval(videoTimerRef.current);
   }, [store.mediaType, store.videoPlaying, paint]);
 
   /* ── File upload handler ────────────────────────── */

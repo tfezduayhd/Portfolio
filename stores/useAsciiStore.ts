@@ -109,7 +109,7 @@ export const useAsciiStore = create<AsciiStudioState>((set) => ({
   setTotalFrames: (v) => set({ totalFrames: v }),
   setCurrentFrame: (v) => set({ currentFrame: v }),
   setVideoPlaying: (v) => set({ videoPlaying: v }),
-  setExporting: (v) => set({ exporting: v, exportProgress: v ? 0 : 0 }),
+  setExporting: (v) => set({ exporting: v, exportProgress: 0 }),
   setExportProgress: (v) => set({ exportProgress: v }),
   reset: () => set(INITIAL_STATE),
 }));
