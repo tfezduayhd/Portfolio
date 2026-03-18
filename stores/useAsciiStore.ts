@@ -1,56 +1,64 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+ * ASCII Art Generator – Zustand State Store
+ *
+ * Centralizes every piece of reactive state so that individual control
+ * updates never re-render the whole component tree.  Each setter produces
+ * a shallow-merge patch – Zustand's default behaviour.
+ * ═══════════════════════════════════════════════════════════════════════════ */
+
 import { create } from "zustand";
+import {
+  CHARSET_PRESETS,
+  type CharsetPresetKey,
+  type ColorMode,
+  type MediaKind,
+} from "@/lib/ascii/types";
 
-/** Supported character-set presets. */
-export const CHARSET_PRESETS = {
-  standard: " .:-=+*#%@",
-  blocks: " ░▒▓█",
-  minimal: " .:*#",
-  detailed: " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$",
-  binary: "01",
-  braille: "⠀⠁⠂⠃⠄⠅⠆⠇⡀⡁⡂⡃⡄⡅⡆⡇",
-} as const;
+/* Re-export types so consumers can import everything from the store file */
+export { CHARSET_PRESETS, type CharsetPresetKey, type ColorMode, type MediaKind };
+export type { ExportFormat } from "@/lib/ascii/types";
 
-export type CharsetPresetKey = keyof typeof CHARSET_PRESETS;
-
-export type MediaType = "image" | "video" | null;
-export type ExportFormat = "png" | "webp" | "gif" | "mp4";
+/* ── State shape ──────────────────────────────────────────────────────── */
 
 interface AsciiStudioState {
-  /* ── Media source ──────────────────────────────── */
-  mediaType: MediaType;
+  /* Media source */
+  mediaType: MediaKind;
   imageSrc: string | null;
   videoSrc: string | null;
 
-  /* ── Rendering ──────────────────────────────────── */
+  /* Rendering parameters */
   columns: number;
   brightness: number;
   contrast: number;
   invert: boolean;
-  colorMode: "mono" | "color";
+  colorMode: ColorMode;
   fontSize: number;
   charset: string;
   charsetPreset: CharsetPresetKey;
 
-  /* ── Animation ──────────────────────────────────── */
+  /* Animation */
   animate: boolean;
   fps: number;
   totalFrames: number;
   currentFrame: number;
 
-  /* ── Video playback ─────────────────────────────── */
+  /* Video playback */
   videoPlaying: boolean;
 
-  /* ── Export ──────────────────────────────────────── */
+  /* Export */
   exporting: boolean;
   exportProgress: number;
 
-  /* ── Actions ────────────────────────────────────── */
-  setMedia: (type: MediaType, src: string | null) => void;
+  /* Drag-over visual hint */
+  dragOver: boolean;
+
+  /* Actions */
+  setMedia: (type: MediaKind, src: string | null) => void;
   setColumns: (v: number) => void;
   setBrightness: (v: number) => void;
   setContrast: (v: number) => void;
   setInvert: (v: boolean) => void;
-  setColorMode: (v: "mono" | "color") => void;
+  setColorMode: (v: ColorMode) => void;
   setFontSize: (v: number) => void;
   setCharset: (v: string) => void;
   setCharsetPreset: (k: CharsetPresetKey) => void;
@@ -61,18 +69,21 @@ interface AsciiStudioState {
   setVideoPlaying: (v: boolean) => void;
   setExporting: (v: boolean) => void;
   setExportProgress: (v: number) => void;
+  setDragOver: (v: boolean) => void;
   reset: () => void;
 }
 
-const INITIAL_STATE = {
-  mediaType: null as MediaType,
+/* ── Initial values ───────────────────────────────────────────────────── */
+
+const DEFAULTS = {
+  mediaType: null as MediaKind,
   imageSrc: null as string | null,
   videoSrc: null as string | null,
   columns: 96,
   brightness: 0,
   contrast: 0,
   invert: false,
-  colorMode: "mono" as const,
+  colorMode: "mono" as ColorMode,
   fontSize: 7,
   charset: CHARSET_PRESETS.standard,
   charsetPreset: "standard" as CharsetPresetKey,
@@ -83,10 +94,13 @@ const INITIAL_STATE = {
   videoPlaying: false,
   exporting: false,
   exportProgress: 0,
+  dragOver: false,
 };
 
+/* ── Store ────────────────────────────────────────────────────────────── */
+
 export const useAsciiStore = create<AsciiStudioState>((set) => ({
-  ...INITIAL_STATE,
+  ...DEFAULTS,
 
   setMedia: (type, src) =>
     set({
@@ -96,6 +110,7 @@ export const useAsciiStore = create<AsciiStudioState>((set) => ({
       currentFrame: 0,
       videoPlaying: false,
     }),
+
   setColumns: (v) => set({ columns: v }),
   setBrightness: (v) => set({ brightness: v }),
   setContrast: (v) => set({ contrast: v }),
@@ -103,7 +118,8 @@ export const useAsciiStore = create<AsciiStudioState>((set) => ({
   setColorMode: (v) => set({ colorMode: v }),
   setFontSize: (v) => set({ fontSize: v }),
   setCharset: (v) => set({ charset: v }),
-  setCharsetPreset: (k) => set({ charsetPreset: k, charset: CHARSET_PRESETS[k] }),
+  setCharsetPreset: (k) =>
+    set({ charsetPreset: k, charset: CHARSET_PRESETS[k] }),
   setAnimate: (v) => set({ animate: v, currentFrame: 0 }),
   setFps: (v) => set({ fps: v }),
   setTotalFrames: (v) => set({ totalFrames: v }),
@@ -111,5 +127,6 @@ export const useAsciiStore = create<AsciiStudioState>((set) => ({
   setVideoPlaying: (v) => set({ videoPlaying: v }),
   setExporting: (v) => set({ exporting: v, exportProgress: 0 }),
   setExportProgress: (v) => set({ exportProgress: v }),
-  reset: () => set(INITIAL_STATE),
+  setDragOver: (v) => set({ dragOver: v }),
+  reset: () => set(DEFAULTS),
 }));
