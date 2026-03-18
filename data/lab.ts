@@ -3,10 +3,10 @@ import { LabItem } from "@/types";
 export const labItems: LabItem[] = [
   {
     slug: "ascii-image-studio",
-    title: "ASCII Image Studio",
+    title: "ASCII Art & Media Generator",
     description:
-      "Advanced image-to-ASCII studio with visual tuning, custom character sets, animation controls, and export-ready rendering workflows.",
-    tags: ["Tool", "ASCII", "Animation", "Export"],
+      "Highly performant image & video to ASCII art generator with real-time Canvas rendering, colour mode, customisable character sets, animation controls, and export to PNG, WebP, GIF & MP4.",
+    tags: ["Tool", "ASCII", "Canvas", "Animation", "Export", "Video"],
     component: "AsciiImageStudio",
     year: 2026,
   },
