@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════════
  * ASCII Art Generator – Zustand State Store
  *
- * Centralises every piece of reactive state so that individual control
+ * Centralizes every piece of reactive state so that individual control
  * updates never re-render the whole component tree.  Each setter produces
  * a shallow-merge patch – Zustand's default behaviour.
  * ═══════════════════════════════════════════════════════════════════════════ */

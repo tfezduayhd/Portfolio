@@ -17,8 +17,11 @@ function pushU16(out: number[], v: number): void {
 
 /* ── Colour quantisation ──────────────────────────────────────────────── */
 
+/** Result of colour quantisation for a single GIF frame. */
 interface QuantiseResult {
+  /** Flat RGB palette (256 × 3 = 768 bytes). Entry `i` starts at `i * 3`. */
   palette: Uint8Array;
+  /** One byte per pixel, each being an index into `palette`. */
   indexed: Uint8Array;
 }
 
@@ -95,6 +98,14 @@ function quantise(
 
 /* ── LZW encoder ──────────────────────────────────────────────────────── */
 
+/**
+ * Compress an indexed-colour buffer using the LZW algorithm.
+ *
+ * @param indexed      One byte per pixel (palette indices).
+ * @param minCodeSize  Minimum LZW code size (always 8 for 256-colour GIF).
+ * @returns            The compressed byte stream ready to be split into
+ *                     GIF sub-blocks.
+ */
 function lzwEncode(indexed: Uint8Array, minCodeSize: number): number[] {
   const clearCode = 1 << minCodeSize;
   const eoiCode = clearCode + 1;

@@ -65,7 +65,7 @@ export function renderAsciiData(
       const g = px[offset + 1];
       const b = px[offset + 2];
 
-      /* BT.709 luminance */
+      /* BT.709 luminance (ITU-R Recommendation BT.709) */
       const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
       /* Optional sine-wave animation */
