@@ -17,27 +17,27 @@ export default function Header() {
   const languageOptions: Language[] = ["fr", "en"];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-neutral-950/45 backdrop-blur-xl">
-      <nav className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0a0a0f]/40 backdrop-blur-2xl">
+      <nav className="max-w-6xl mx-auto px-6 sm:px-8 py-4 flex items-center justify-between">
         <Link
           href={withLanguage("/", language)}
-          className="text-lg font-semibold tracking-tight hover:text-indigo-300 transition-colors duration-300"
+          className="text-base font-semibold tracking-tight text-white/70 hover:text-white transition-colors duration-400"
         >
           Hd.
         </Link>
-        <div className="flex items-center gap-4">
-          <ul className="flex gap-6 text-sm font-medium text-neutral-300">
+        <div className="flex items-center gap-5">
+          <ul className="flex gap-6 text-[13px] font-medium text-white/35">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={withLanguage(link.href, language)}
-                  className={`hover:text-white transition-colors duration-300 ${
+                  className={`hover:text-white/80 transition-colors duration-400 ${
                     link.href === "/"
                       ? pathname === "/"
-                        ? "text-white"
+                        ? "text-white/80"
                         : ""
                       : pathname.startsWith(link.href)
-                      ? "text-white"
+                      ? "text-white/80"
                       : ""
                   }`}
                 >
@@ -46,15 +46,15 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center rounded-lg border border-white/10 bg-white/5 p-0.5">
+          <div className="flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] p-0.5">
             {languageOptions.map((option) => (
               <Link
                 key={option}
                 href={withLanguage(pathname, option)}
-                className={`px-2 py-1 text-xs font-semibold uppercase tracking-wide rounded-md transition-colors duration-300 ${
+                className={`px-2 py-1 text-[11px] font-semibold uppercase tracking-wider rounded transition-colors duration-300 ${
                   language === option
-                    ? "bg-white text-neutral-950"
-                    : "text-neutral-300 hover:text-white"
+                    ? "bg-white/10 text-white/80"
+                    : "text-white/25 hover:text-white/50"
                 }`}
               >
                 {option}

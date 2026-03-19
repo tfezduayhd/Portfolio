@@ -10,13 +10,13 @@ export default function Footer() {
   const copy = uiCopy[language];
 
   return (
-    <footer className="border-t border-white/10 py-8 mt-16 bg-neutral-950/40 backdrop-blur-xl">
-      <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-400">
+    <footer className="relative border-t border-white/[0.06] py-10 mt-20">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-white/25">
         <span>© {new Date().getFullYear()} — {copy.footerRole}</span>
-        <div className="flex gap-6">
-          <a href="mailto:hello@example.com" className="hover:text-white transition-colors duration-300">Email</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">LinkedIn</a>
-          <a href="https://github.com/Ikenakk" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">GitHub</a>
+        <div className="flex gap-8">
+          <a href="mailto:hello@example.com" className="hover:text-white/60 transition-colors duration-400">Email</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors duration-400">LinkedIn</a>
+          <a href="https://github.com/Ikenakk" target="_blank" rel="noopener noreferrer" className="hover:text-white/60 transition-colors duration-400">GitHub</a>
         </div>
       </div>
     </footer>
