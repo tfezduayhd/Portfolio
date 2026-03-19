@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const GRAIN_TEXTURE_SVG =
+  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIxIi8+PC9zdmc+";
+
 interface VideoBackgroundProps {
   src: string;
   fallbackColor?: string;
@@ -56,8 +59,11 @@ export default function VideoBackground({
         style={{ backgroundColor: `rgba(10, 10, 15, ${overlayOpacity})` }}
       />
 
-      {/* Subtle grain texture */}
-      <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIxIi8+PC9zdmc+')] bg-repeat" />
+      {/* Subtle grain texture for cinematic feel */}
+      <div
+        className="absolute inset-0 opacity-[0.03] mix-blend-overlay bg-repeat"
+        style={{ backgroundImage: `url('${GRAIN_TEXTURE_SVG}')` }}
+      />
     </div>
   );
 }

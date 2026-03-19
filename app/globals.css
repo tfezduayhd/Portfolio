@@ -59,8 +59,8 @@ body {
     animation: fadeUp 1100ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
   }
 
-  /* Horizontal rule with gradient */
-  .divider-line {
+  /* Horizontal rule with gradient fade */
+  .gradient-divider {
     height: 1px;
     background: linear-gradient(
       90deg,

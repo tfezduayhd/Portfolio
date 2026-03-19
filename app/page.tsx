@@ -44,7 +44,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           </h1>
 
           {/* Thin divider */}
-          <div className="divider-line w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
+          <div className="gradient-divider w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
 
           {/* Description */}
           <p className="text-sm sm:text-base leading-relaxed text-white/35 max-w-xl fade-up-delay-2">
