@@ -3,6 +3,7 @@ import Link from "next/link";
 import SectionWrapper from "@/components/SectionWrapper";
 import ProjectCard from "@/components/ProjectCard";
 import LabCard from "@/components/LabCard";
+import VideoBackground from "@/components/VideoBackground";
 import { projects } from "@/data/projects";
 import { labItems } from "@/data/lab";
 import { getLanguage, getLocalizedLabItem, getLocalizedProject, uiCopy, withLanguage } from "@/lib/i18n";
@@ -25,6 +26,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
+      <VideoBackground src="/background.mp4" overlayOpacity={0.5} blur={4} />
+
       {/* ── Hero: Full-viewport immersive introduction ─────────── */}
       <section className="relative min-h-[92vh] flex items-end pb-20 sm:pb-28">
         <div className="max-w-6xl mx-auto w-full px-6 sm:px-8">
