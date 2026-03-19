@@ -25,11 +25,25 @@ export default function VideoBackground({
     const video = videoRef.current;
     if (!video) return;
 
-    const handleCanPlay = () => setIsLoaded(true);
-    video.addEventListener("canplaythrough", handleCanPlay);
+    let settled = false;
+    const handleReady = () => {
+      if (settled) return;
+      settled = true;
+      setIsLoaded(true);
+    };
+    video.addEventListener("canplay", handleReady);
+    video.addEventListener("canplaythrough", handleReady);
+    video.addEventListener("loadeddata", handleReady);
+
+    // If the browser already has the video buffered (e.g. from cache), trigger now.
+    if (video.readyState >= 3) {
+      handleReady();
+    }
 
     return () => {
-      video.removeEventListener("canplaythrough", handleCanPlay);
+      video.removeEventListener("canplay", handleReady);
+      video.removeEventListener("canplaythrough", handleReady);
+      video.removeEventListener("loadeddata", handleReady);
     };
   }, []);
 
