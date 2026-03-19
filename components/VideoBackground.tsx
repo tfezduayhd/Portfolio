@@ -37,6 +37,9 @@ export default function VideoBackground({
   const [isLoaded, setIsLoaded] = useState(false);
   const rafRef = useRef<number | null>(null);
 
+  // Time offset to skip the buggy first frame (~1 frame at 30 fps)
+  const FRAME_OFFSET = 0.04;
+
   // Video ready detection
   useEffect(() => {
     const video = videoRef.current;
@@ -46,8 +49,8 @@ export default function VideoBackground({
     const handleReady = () => {
       if (settled) return;
       settled = true;
-      // Start at frame 2 to avoid a buggy first frame (~1 frame at 30 fps)
-      video.currentTime = 0.04;
+      // Start at frame 2 to avoid a buggy first frame
+      video.currentTime = FRAME_OFFSET;
       setIsLoaded(true);
     };
     video.addEventListener("canplay", handleReady);
@@ -88,9 +91,8 @@ export default function VideoBackground({
             ? Math.max(0, Math.min(1, window.scrollY / scrollMax))
             : 0;
         // Skip buggy first frame: remap so progress 0 maps to frame 2
-        const frameOffset = 0.04;
-        const usable = video.duration - frameOffset;
-        video.currentTime = frameOffset + progress * usable;
+        const usable = video.duration - FRAME_OFFSET;
+        video.currentTime = FRAME_OFFSET + progress * usable;
       });
     };
 
@@ -122,6 +124,13 @@ export default function VideoBackground({
     };
   }, []);
 
+  const videoStyle: React.CSSProperties | undefined = (() => {
+    const s: React.CSSProperties = {};
+    if (videoScale !== 1) s.transform = `scale(${videoScale})`;
+    if (blur > 0) s.filter = `blur(${blur}px)`;
+    return Object.keys(s).length > 0 ? s : undefined;
+  })();
+
   return (
     <div
       className={`fixed inset-x-0 bottom-0 -z-10 overflow-hidden ${className}`}
@@ -141,12 +150,7 @@ export default function VideoBackground({
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-out ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        style={(() => {
-          const s: React.CSSProperties = {};
-          if (videoScale !== 1) s.transform = `scale(${videoScale})`;
-          if (blur > 0) s.filter = `blur(${blur}px)`;
-          return Object.keys(s).length > 0 ? s : undefined;
-        })()}
+        style={videoStyle}
       >
         <source src={src} type="video/mp4" />
       </video>
