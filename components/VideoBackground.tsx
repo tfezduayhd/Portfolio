@@ -5,9 +5,6 @@ import { useEffect, useRef, useState } from "react";
 const GRAIN_TEXTURE_SVG =
   "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIxIi8+PC9zdmc+";
 
-// How fast the video drifts relative to scroll (0 = no drift, 1 = full scroll speed)
-const PARALLAX_RATIO = 0.25;
-
 interface VideoBackgroundProps {
   src: string;
   fallbackColor?: string;
@@ -52,7 +49,7 @@ export default function VideoBackground({
     };
   }, []);
 
-  // Parallax scroll effect — direct DOM mutation for zero-React-overhead 60 fps
+  // Scroll-driven frame scrubbing — advances the video currentTime as the user scrolls
   useEffect(() => {
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -62,25 +59,23 @@ export default function VideoBackground({
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = null;
         const video = videoRef.current;
-        if (video) {
-          // translate3d triggers GPU compositing; only Y axis is animated
-          video.style.transform = `translate3d(0, ${-window.scrollY * PARALLAX_RATIO}px, 0)`;
-        }
+        if (!video || !video.duration || video.seekable.length === 0) return;
+
+        const scrollMax =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollMax > 0 ? window.scrollY / scrollMax : 0;
+        video.currentTime = progress * video.duration;
       });
     };
 
-    const resetTransform = () => {
+    const attach = () =>
+      window.addEventListener("scroll", onScroll, { passive: true });
+    const detach = () => {
+      window.removeEventListener("scroll", onScroll);
       if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
-      if (videoRef.current) videoRef.current.style.transform = "";
-    };
-
-    const attach = () => window.addEventListener("scroll", onScroll, { passive: true });
-    const detach = () => {
-      window.removeEventListener("scroll", onScroll);
-      resetTransform();
     };
 
     // Respond dynamically if the user changes their motion preference mid-session
@@ -108,25 +103,18 @@ export default function VideoBackground({
       aria-hidden="true"
     >
       {/*
-       * The video is deliberately oversized (160% tall, centered at -30%)
-       * so there is always enough visual margin for the parallax translation.
-       * overflow-hidden on the parent clips anything that drifts out of view.
+       * The video is deliberately kept at 100% height so it fills the fixed
+       * viewport. Scroll-driven scrubbing updates currentTime directly, so
+       * no parallax oversizing is required.
        */}
       <video
         ref={videoRef}
-        autoPlay
-        loop
         muted
         playsInline
         preload="auto"
-        className={`absolute w-full object-cover transition-opacity duration-[1800ms] ease-out ${
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-out ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        style={{
-          height: "160%",
-          top: "-30%",
-          willChange: "transform",
-        }}
       >
         <source src={src} type="video/mp4" />
       </video>
