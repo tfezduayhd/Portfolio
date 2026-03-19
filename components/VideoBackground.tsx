@@ -10,6 +10,9 @@ interface VideoBackgroundProps {
   fallbackColor?: string;
   overlayOpacity?: number;
   className?: string;
+  /** CSS length value (e.g. "3.5rem") to offset the top of the video container,
+   *  so the video starts below a fixed/sticky header instead of behind it. */
+  topOffset?: string;
 }
 
 export default function VideoBackground({
@@ -17,6 +20,7 @@ export default function VideoBackground({
   fallbackColor = "#0a0a0f",
   overlayOpacity = 0.55,
   className = "",
+  topOffset = "0px",
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -98,8 +102,8 @@ export default function VideoBackground({
 
   return (
     <div
-      className={`fixed inset-0 -z-10 overflow-hidden ${className}`}
-      style={{ backgroundColor: fallbackColor }}
+      className={`fixed inset-x-0 bottom-0 -z-10 overflow-hidden ${className}`}
+      style={{ top: topOffset, backgroundColor: fallbackColor }}
       aria-hidden="true"
     >
       {/*
