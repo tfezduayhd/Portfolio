@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans bg-[#0a0a0f] text-neutral-100 min-h-screen flex flex-col antialiased">
-        <VideoBackground src="/background.mp4" overlayOpacity={0.4} videoScale={0.85} topOffset="3.5rem" />
+        <VideoBackground src="/background.mp4" overlayOpacity={0.2} />
         <Suspense>
           <Header />
         </Suspense>
