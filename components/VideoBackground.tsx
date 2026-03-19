@@ -19,6 +19,9 @@ interface VideoBackgroundProps {
    *  Note: this is a cosmetic CSS transform applied to a decorative background
    *  element; it does not affect page layout or interact with browser zoom. */
   videoScale?: number;
+  /** Blur radius in pixels applied to the video to soften low-quality footage.
+   *  Defaults to 0 (no blur). */
+  blur?: number;
 }
 
 export default function VideoBackground({
@@ -28,6 +31,7 @@ export default function VideoBackground({
   className = "",
   topOffset = "0px",
   videoScale = 1,
+  blur = 0,
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -42,6 +46,8 @@ export default function VideoBackground({
     const handleReady = () => {
       if (settled) return;
       settled = true;
+      // Start at frame 2 to avoid a buggy first frame (~1 frame at 30 fps)
+      video.currentTime = 0.04;
       setIsLoaded(true);
     };
     video.addEventListener("canplay", handleReady);
@@ -81,7 +87,10 @@ export default function VideoBackground({
           scrollMax > 0
             ? Math.max(0, Math.min(1, window.scrollY / scrollMax))
             : 0;
-        video.currentTime = progress * video.duration;
+        // Skip buggy first frame: remap so progress 0 maps to frame 2
+        const frameOffset = 0.04;
+        const usable = video.duration - frameOffset;
+        video.currentTime = frameOffset + progress * usable;
       });
     };
 
@@ -132,7 +141,12 @@ export default function VideoBackground({
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-out ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        style={videoScale !== 1 ? { transform: `scale(${videoScale})` } : undefined}
+        style={(() => {
+          const s: React.CSSProperties = {};
+          if (videoScale !== 1) s.transform = `scale(${videoScale})`;
+          if (blur > 0) s.filter = `blur(${blur}px)`;
+          return Object.keys(s).length > 0 ? s : undefined;
+        })()}
       >
         <source src={src} type="video/mp4" />
       </video>

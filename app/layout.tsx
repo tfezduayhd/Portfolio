@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import VideoBackground from "@/components/VideoBackground";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans bg-[#0a0a0f] text-neutral-100 min-h-screen flex flex-col antialiased">
-        <VideoBackground src="/background.mp4" overlayOpacity={0.2} />
         <Suspense>
           <Header />
         </Suspense>
