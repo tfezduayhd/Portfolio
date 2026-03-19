@@ -13,6 +13,12 @@ interface VideoBackgroundProps {
   /** CSS length value (e.g. "3.5rem") to offset the top of the video container,
    *  so the video starts below a fixed/sticky header instead of behind it. */
   topOffset?: string;
+  /** Uniform scale applied to the video element (e.g. 0.85 zooms out by 15%).
+   *  Values < 1 show more of the video content at the cost of revealing the
+   *  fallbackColor background at the edges. Defaults to 1 (no scaling).
+   *  Note: this is a cosmetic CSS transform applied to a decorative background
+   *  element; it does not affect page layout or interact with browser zoom. */
+  videoScale?: number;
 }
 
 export default function VideoBackground({
@@ -21,6 +27,7 @@ export default function VideoBackground({
   overlayOpacity = 0.55,
   className = "",
   topOffset = "0px",
+  videoScale = 1,
 }: VideoBackgroundProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -67,7 +74,13 @@ export default function VideoBackground({
 
         const scrollMax =
           document.documentElement.scrollHeight - window.innerHeight;
-        const progress = scrollMax > 0 ? window.scrollY / scrollMax : 0;
+        // Clamp to [0, 1] to guard against negative overscroll and transient
+        // scrollHeight fluctuations (e.g. mobile address-bar hide/show) that
+        // would otherwise push currentTime past the end of the video.
+        const progress =
+          scrollMax > 0
+            ? Math.max(0, Math.min(1, window.scrollY / scrollMax))
+            : 0;
         video.currentTime = progress * video.duration;
       });
     };
@@ -119,6 +132,7 @@ export default function VideoBackground({
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1800ms] ease-out ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
+        style={videoScale !== 1 ? { transform: `scale(${videoScale})` } : undefined}
       >
         <source src={src} type="video/mp4" />
       </video>
