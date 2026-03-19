@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -35,6 +36,7 @@ export default function RootLayout({
         <Suspense>
           <Footer />
         </Suspense>
+        <Analytics />
       </body>
     </html>
   );
