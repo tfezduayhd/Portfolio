@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+/* ── Design System: Cinematic Dark ────────────────────────────── */
+
 * {
   box-sizing: border-box;
 }
@@ -9,45 +11,71 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(70vw 45vh at 10% 0%, rgba(99, 102, 241, 0.25), transparent 60%),
-    radial-gradient(60vw 40vh at 90% 0%, rgba(16, 185, 129, 0.18), transparent 60%),
-    #09090b;
+  background: #0a0a0f;
 }
 
 ::selection {
-  background-color: #6366f1;
-  color: white;
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
 }
+
+/* ── Utility classes ──────────────────────────────────────────── */
 
 @layer utilities {
   .glass-panel {
-    background: linear-gradient(135deg, rgba(38, 38, 38, 0.78), rgba(23, 23, 23, 0.58));
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(14px);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.015)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px) saturate(1.2);
   }
 
   .smooth-lift {
-    transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), border-color 300ms ease, background-color 300ms ease;
+    transition:
+      transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 400ms ease,
+      background-color 400ms ease;
   }
 
   .smooth-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
   }
 
   .fade-up {
-    animation: fadeUp 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: fadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .fade-up-delay {
-    animation: fadeUp 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: fadeUp 1100ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+  }
+
+  .fade-up-delay-2 {
+    animation: fadeUp 1100ms cubic-bezier(0.22, 1, 0.36, 1) 400ms both;
+  }
+
+  .fade-up-delay-3 {
+    animation: fadeUp 1100ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both;
+  }
+
+  /* Horizontal rule with gradient */
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.12) 30%,
+      rgba(255, 255, 255, 0.12) 70%,
+      transparent
+    );
   }
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -57,7 +85,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
-  .fade-up-delay {
+  .fade-up-delay,
+  .fade-up-delay-2,
+  .fade-up-delay-3 {
     animation: none;
   }
 

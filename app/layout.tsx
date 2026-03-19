@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import VideoBackground from "@/components/VideoBackground";
 
 export const metadata: Metadata = {
   title: {
@@ -25,11 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans bg-neutral-950 text-neutral-100 min-h-screen flex flex-col">
+      <body className="font-sans bg-[#0a0a0f] text-neutral-100 min-h-screen flex flex-col antialiased">
+        <VideoBackground src="/background.mp4" overlayOpacity={0.55} />
         <Suspense>
           <Header />
         </Suspense>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative">{children}</main>
         <Suspense>
           <Footer />
         </Suspense>

@@ -25,63 +25,71 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
-      {/* Hero */}
-      <SectionWrapper className="pt-24 pb-12">
-        <div className="max-w-2xl lg:max-w-4xl rounded-3xl glass-panel p-8 sm:p-10 fade-up">
-          <p className="text-sm font-medium text-indigo-300 mb-4 tracking-widest uppercase">
+      {/* ── Hero: Full-viewport immersive introduction ─────────── */}
+      <section className="relative min-h-[92vh] flex items-end pb-20 sm:pb-28">
+        <div className="max-w-6xl mx-auto w-full px-6 sm:px-8">
+          {/* Role tag */}
+          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-6 fade-up">
             {copy.heroRole}
           </p>
-          <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight fade-up-delay">
-            {copy.heroTitle}<br />
-            <span className="bg-gradient-to-r from-indigo-300 to-emerald-300 bg-clip-text text-transparent">{copy.heroAccent}</span>
+
+          {/* Name & statement — brutalist large type */}
+          <h1 className="fade-up-delay">
+            <span className="block text-[clamp(2.4rem,6vw,5.2rem)] font-bold leading-[1.05] tracking-tight text-white/90">
+              {copy.heroTitle}
+            </span>
+            <span className="block mt-2 text-[clamp(1.2rem,2.8vw,2rem)] font-light leading-snug text-white/50 max-w-3xl">
+              {copy.heroAccent}
+            </span>
           </h1>
-          <p className="text-lg text-neutral-300 mb-8 leading-relaxed">
+
+          {/* Thin divider */}
+          <div className="divider-line w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
+
+          {/* Description */}
+          <p className="text-sm sm:text-base leading-relaxed text-white/35 max-w-xl fade-up-delay-2">
             {copy.heroDescription}
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href={withLanguage("/projects", language)}
-              className="px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium transition-all duration-300 text-sm smooth-lift"
-            >
-              {copy.ctaProjects}
-            </Link>
-            <Link
-              href={withLanguage("/lab", language)}
-              className="px-6 py-3 rounded-xl border border-white/15 hover:border-white/30 text-neutral-200 hover:text-white font-medium transition-all duration-300 text-sm smooth-lift bg-white/5 backdrop-blur-sm"
-            >
-              {copy.ctaLab}
-            </Link>
-          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
-      {/* Featured Projects */}
+      {/* ── Featured Projects ─────────────────────────────────── */}
       <SectionWrapper>
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-neutral-100">{copy.selectedWork}</h2>
-          <Link href={withLanguage("/projects", language)} className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors">
+        <div className="flex items-end justify-between mb-10 fade-up">
+          <div>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/30 mb-2">01</span>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white/85 tracking-tight">{copy.selectedWork}</h2>
+          </div>
+          <Link
+            href={withLanguage("/projects", language)}
+            className="text-xs tracking-wide text-white/30 hover:text-white/60 transition-colors duration-400 uppercase"
+          >
             {copy.allProjects}
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} language={language} />
           ))}
         </div>
       </SectionWrapper>
 
-      {/* Featured Lab */}
+      {/* ── Featured Lab ──────────────────────────────────────── */}
       <SectionWrapper>
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-end justify-between mb-10 fade-up">
           <div>
-            <h2 className="text-2xl font-bold text-neutral-100">Lab</h2>
-            <p className="text-sm text-neutral-500 mt-1">{copy.labSubtitle}</p>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/30 mb-2">02</span>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white/85 tracking-tight">Lab</h2>
+            <p className="text-xs text-white/25 mt-1">{copy.labSubtitle}</p>
           </div>
-          <Link href={withLanguage("/lab", language)} className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors">
+          <Link
+            href={withLanguage("/lab", language)}
+            className="text-xs tracking-wide text-white/30 hover:text-white/60 transition-colors duration-400 uppercase"
+          >
             {copy.allExperiments}
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           {featuredLab.map((item) => (
             <LabCard key={item.slug} item={item} language={language} />
           ))}
