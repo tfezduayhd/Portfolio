@@ -14,9 +14,11 @@ html {
 body {
   background: #0a0a0f;
   overscroll-behavior: none;
-  /* Accent colour shared by glow, divider, and text highlights */
-  --accent: 140 120 255;
-  --accent-alt: 100 180 255;
+  /* Accent colours shared by glow, divider, and text highlights
+     Rose / Violet / Green — echoing the flower in the background video */
+  --accent: 180 100 220;
+  --accent-alt: 120 200 140;
+  --accent-rose: 220 100 160;
 }
 
 ::selection {
@@ -82,9 +84,10 @@ body {
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(var(--accent), 0.25) 20%,
-      rgba(var(--accent-alt), 0.18) 50%,
-      rgba(var(--accent), 0.25) 80%,
+      rgba(var(--accent-rose), 0.35) 15%,
+      rgba(var(--accent), 0.30) 40%,
+      rgba(var(--accent-alt), 0.28) 65%,
+      rgba(var(--accent-rose), 0.35) 85%,
       transparent
     );
   }
@@ -92,8 +95,9 @@ body {
   /* Subtle text glow to lift headings off a video background */
   .text-glow {
     text-shadow:
-      0 0 30px rgba(var(--accent), 0.12),
-      0 0 60px rgba(var(--accent-alt), 0.06);
+      0 0 25px rgba(var(--accent-rose), 0.18),
+      0 0 50px rgba(var(--accent), 0.12),
+      0 0 80px rgba(var(--accent-alt), 0.08);
   }
 
   /* Large ambient glow positioned behind hero content */
@@ -103,9 +107,10 @@ body {
     border-radius: 50%;
     background: radial-gradient(
       ellipse at center,
-      rgba(var(--accent), 0.07) 0%,
-      rgba(var(--accent-alt), 0.04) 40%,
-      transparent 70%
+      rgba(var(--accent-rose), 0.10) 0%,
+      rgba(var(--accent), 0.07) 35%,
+      rgba(var(--accent-alt), 0.05) 60%,
+      transparent 80%
     );
     filter: blur(60px);
   }

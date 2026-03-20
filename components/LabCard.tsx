@@ -12,10 +12,10 @@ export default function LabCard({ item, language }: LabCardProps) {
   return (
     <Link
       href={withLanguage(`/lab/${item.slug}`, language)}
-      className="group block rounded-2xl glass-panel p-6 smooth-lift hover:border-white/15"
+      className="group block rounded-2xl glass-panel p-5 smooth-lift hover:border-[rgba(var(--accent-alt),0.2)]"
     >
       <div className="flex items-center gap-3 mb-2">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-white/[0.04] text-white/30 text-xs font-bold shrink-0 border border-white/[0.06]">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[rgba(var(--accent-alt),0.06)] text-[rgba(var(--accent-alt),0.5)] text-xs font-bold shrink-0 border border-[rgba(var(--accent-alt),0.1)]">
           ▶
         </span>
         <div className="flex items-start justify-between gap-4 flex-1">
@@ -25,7 +25,7 @@ export default function LabCard({ item, language }: LabCardProps) {
           <span className="text-[11px] text-white/20 shrink-0 mt-0.5 tracking-wider">{item.year}</span>
         </div>
       </div>
-      <p className="text-sm text-white/30 mb-4 ml-10 leading-relaxed">{item.description}</p>
+      <p className="text-sm text-white/30 mb-3 ml-10 leading-relaxed">{item.description}</p>
       <div className="flex flex-wrap gap-2 ml-10">
         {item.tags.map((tag) => (
           <Tag key={tag} label={tag} />
