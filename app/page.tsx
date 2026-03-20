@@ -29,14 +29,14 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <VideoBackground src="/background.mp4" overlayOpacity={0.6} blur={8} />
 
       {/* ── Hero: Full-viewport immersive introduction ─────────── */}
-      <section className="relative min-h-[92vh] flex items-end pb-20 sm:pb-28">
+      <section className="relative min-h-[80vh] flex items-end pb-14 sm:pb-20">
         {/* Ambient glow — colored light that ties into the video palette */}
         <div className="hero-ambient-glow -bottom-20 left-[-10%] w-[70%] h-[60%]" />
-        <div className="hero-ambient-glow -top-10 right-[-5%] w-[40%] h-[40%] opacity-50" />
+        <div className="hero-ambient-glow -top-10 right-[-5%] w-[40%] h-[40%] opacity-60" />
 
         <div className="max-w-6xl mx-auto w-full px-6 sm:px-8">
           {/* Role tag */}
-          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-[rgba(var(--accent),0.6)] mb-6 fade-up">
+          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-[rgba(var(--accent-rose),0.7)] mb-4 fade-up">
             {copy.heroRole}
           </p>
 
@@ -51,7 +51,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           </h1>
 
           {/* Thin divider — accent-colored to match glow */}
-          <div className="gradient-divider-accent w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
+          <div className="gradient-divider-accent w-full max-w-md mt-8 mb-5 fade-up-delay-2" />
 
           {/* Description */}
           <p className="text-sm sm:text-base leading-relaxed text-white/55 max-w-xl fade-up-delay-2">
@@ -62,19 +62,19 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
       {/* ── Featured Projects ─────────────────────────────────── */}
       <SectionWrapper>
-        <div className="flex items-end justify-between mb-10 fade-up">
+        <div className="flex items-end justify-between mb-6 fade-up">
           <div>
-            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-2">01</span>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-[rgba(var(--accent-rose),0.55)] mb-2">01</span>
             <h2 className="text-xl sm:text-2xl font-semibold text-white/90 tracking-tight">{copy.selectedWork}</h2>
           </div>
           <Link
             href={withLanguage("/projects", language)}
-            className="text-xs tracking-wide text-white/40 hover:text-white/70 transition-colors duration-400 uppercase"
+            className="text-xs tracking-wide text-[rgba(var(--accent-alt),0.5)] hover:text-[rgba(var(--accent-alt),0.8)] transition-colors duration-400 uppercase"
           >
             {copy.allProjects}
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 gap-4">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} language={language} />
           ))}
@@ -83,20 +83,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
       {/* ── Featured Lab ──────────────────────────────────────── */}
       <SectionWrapper>
-        <div className="flex items-end justify-between mb-10 fade-up">
+        <div className="flex items-end justify-between mb-6 fade-up">
           <div>
-            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-2">02</span>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-[rgba(var(--accent-alt),0.55)] mb-2">02</span>
             <h2 className="text-xl sm:text-2xl font-semibold text-white/90 tracking-tight">Lab</h2>
             <p className="text-xs text-white/35 mt-1">{copy.labSubtitle}</p>
           </div>
           <Link
             href={withLanguage("/lab", language)}
-            className="text-xs tracking-wide text-white/40 hover:text-white/70 transition-colors duration-400 uppercase"
+            className="text-xs tracking-wide text-[rgba(var(--accent-alt),0.5)] hover:text-[rgba(var(--accent-alt),0.8)] transition-colors duration-400 uppercase"
           >
             {copy.allExperiments}
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 gap-4">
           {featuredLab.map((item) => (
             <LabCard key={item.slug} item={item} language={language} />
           ))}

@@ -10,7 +10,7 @@ export default function Footer() {
   const copy = uiCopy[language];
 
   return (
-    <footer className="relative border-t border-white/[0.06] py-10 mt-20">
+    <footer className="relative border-t border-white/[0.06] py-8 mt-12">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-white/25">
         <span>© {new Date().getFullYear()} — {copy.footerRole}</span>
         <div className="flex gap-8">
