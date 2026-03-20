@@ -30,27 +30,31 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
       {/* ── Hero: Full-viewport immersive introduction ─────────── */}
       <section className="relative min-h-[92vh] flex items-end pb-20 sm:pb-28">
+        {/* Ambient glow — colored light that ties into the video palette */}
+        <div className="hero-ambient-glow -bottom-20 left-[-10%] w-[70%] h-[60%]" />
+        <div className="hero-ambient-glow -top-10 right-[-5%] w-[40%] h-[40%] opacity-50" />
+
         <div className="max-w-6xl mx-auto w-full px-6 sm:px-8">
           {/* Role tag */}
-          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/50 mb-6 fade-up">
+          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-[rgba(var(--accent),0.6)] mb-6 fade-up">
             {copy.heroRole}
           </p>
 
           {/* Name & statement — brutalist large type */}
-          <h1 className="fade-up-delay">
-            <span className="block text-[clamp(2.4rem,6vw,5.2rem)] font-bold leading-[1.05] tracking-tight text-white/90">
+          <h1 className="fade-up-delay text-glow">
+            <span className="block text-[clamp(2.4rem,6vw,5.2rem)] font-bold leading-[1.05] tracking-tight text-white/95">
               {copy.heroTitle}
             </span>
-            <span className="block mt-2 text-[clamp(1.2rem,2.8vw,2rem)] font-light leading-snug text-white/60 max-w-3xl">
+            <span className="block mt-2 text-[clamp(1.2rem,2.8vw,2rem)] font-light leading-snug text-white/65 max-w-3xl">
               {copy.heroAccent}
             </span>
           </h1>
 
-          {/* Thin divider */}
-          <div className="gradient-divider w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
+          {/* Thin divider — accent-colored to match glow */}
+          <div className="gradient-divider-accent w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
 
           {/* Description */}
-          <p className="text-sm sm:text-base leading-relaxed text-white/50 max-w-xl fade-up-delay-2">
+          <p className="text-sm sm:text-base leading-relaxed text-white/55 max-w-xl fade-up-delay-2">
             {copy.heroDescription}
           </p>
         </div>
