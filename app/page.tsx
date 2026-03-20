@@ -26,13 +26,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
   return (
     <>
-      <VideoBackground src="/background.mp4" overlayOpacity={0.5} blur={4} />
+      <VideoBackground src="/background.mp4" overlayOpacity={0.6} blur={8} />
 
       {/* ── Hero: Full-viewport immersive introduction ─────────── */}
       <section className="relative min-h-[92vh] flex items-end pb-20 sm:pb-28">
         <div className="max-w-6xl mx-auto w-full px-6 sm:px-8">
           {/* Role tag */}
-          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-6 fade-up">
+          <p className="text-[11px] font-medium tracking-[0.35em] uppercase text-white/50 mb-6 fade-up">
             {copy.heroRole}
           </p>
 
@@ -41,7 +41,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <span className="block text-[clamp(2.4rem,6vw,5.2rem)] font-bold leading-[1.05] tracking-tight text-white/90">
               {copy.heroTitle}
             </span>
-            <span className="block mt-2 text-[clamp(1.2rem,2.8vw,2rem)] font-light leading-snug text-white/50 max-w-3xl">
+            <span className="block mt-2 text-[clamp(1.2rem,2.8vw,2rem)] font-light leading-snug text-white/60 max-w-3xl">
               {copy.heroAccent}
             </span>
           </h1>
@@ -50,7 +50,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           <div className="gradient-divider w-full max-w-md mt-10 mb-8 fade-up-delay-2" />
 
           {/* Description */}
-          <p className="text-sm sm:text-base leading-relaxed text-white/35 max-w-xl fade-up-delay-2">
+          <p className="text-sm sm:text-base leading-relaxed text-white/50 max-w-xl fade-up-delay-2">
             {copy.heroDescription}
           </p>
         </div>
@@ -60,12 +60,12 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <SectionWrapper>
         <div className="flex items-end justify-between mb-10 fade-up">
           <div>
-            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/30 mb-2">01</span>
-            <h2 className="text-xl sm:text-2xl font-semibold text-white/85 tracking-tight">{copy.selectedWork}</h2>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-2">01</span>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white/90 tracking-tight">{copy.selectedWork}</h2>
           </div>
           <Link
             href={withLanguage("/projects", language)}
-            className="text-xs tracking-wide text-white/30 hover:text-white/60 transition-colors duration-400 uppercase"
+            className="text-xs tracking-wide text-white/40 hover:text-white/70 transition-colors duration-400 uppercase"
           >
             {copy.allProjects}
           </Link>
@@ -81,13 +81,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <SectionWrapper>
         <div className="flex items-end justify-between mb-10 fade-up">
           <div>
-            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/30 mb-2">02</span>
-            <h2 className="text-xl sm:text-2xl font-semibold text-white/85 tracking-tight">Lab</h2>
-            <p className="text-xs text-white/25 mt-1">{copy.labSubtitle}</p>
+            <span className="block text-[11px] font-medium tracking-[0.35em] uppercase text-white/40 mb-2">02</span>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white/90 tracking-tight">Lab</h2>
+            <p className="text-xs text-white/35 mt-1">{copy.labSubtitle}</p>
           </div>
           <Link
             href={withLanguage("/lab", language)}
-            className="text-xs tracking-wide text-white/30 hover:text-white/60 transition-colors duration-400 uppercase"
+            className="text-xs tracking-wide text-white/40 hover:text-white/70 transition-colors duration-400 uppercase"
           >
             {copy.allExperiments}
           </Link>
