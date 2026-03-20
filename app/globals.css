@@ -14,6 +14,9 @@ html {
 body {
   background: #0a0a0f;
   overscroll-behavior: none;
+  /* Accent colour shared by glow, divider, and text highlights */
+  --accent: 140 120 255;
+  --accent-alt: 100 180 255;
 }
 
 ::selection {
@@ -71,6 +74,40 @@ body {
       rgba(255, 255, 255, 0.12) 70%,
       transparent
     );
+  }
+
+  /* Accent-colored gradient divider linked to the video palette */
+  .gradient-divider-accent {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--accent), 0.25) 20%,
+      rgba(var(--accent-alt), 0.18) 50%,
+      rgba(var(--accent), 0.25) 80%,
+      transparent
+    );
+  }
+
+  /* Subtle text glow to lift headings off a video background */
+  .text-glow {
+    text-shadow:
+      0 0 30px rgba(var(--accent), 0.12),
+      0 0 60px rgba(var(--accent-alt), 0.06);
+  }
+
+  /* Large ambient glow positioned behind hero content */
+  .hero-ambient-glow {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(var(--accent), 0.07) 0%,
+      rgba(var(--accent-alt), 0.04) 40%,
+      transparent 70%
+    );
+    filter: blur(60px);
   }
 }
 
